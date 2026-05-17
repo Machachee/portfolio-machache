@@ -18,22 +18,24 @@ import Footer from "../components/Footer.astro";
   <div class="page-wrapper">
     <ProgressBar />
     <Navbar />
-    <Hero />
+    <main id="main">
+      <Hero />
 
-    <PaperTear position="top" />
-    <div class="page-gap"></div>
-    <PaperTear position="bottom" />
-    <div class="tear-tape-sticker"></div>
+      <PaperTear position="top" />
+      <div class="page-gap"></div>
+      <PaperTear position="bottom" />
+      <div class="tear-tape-sticker"></div>
 
-    <div class="container">
-      <About />
-      <Journey />
-      <Skills />
-      <Projects />
-      <EducationLanguages />
-      <Contact />
-      <Footer />
-    </div>
+      <div class="container">
+        <About />
+        <Journey />
+        <Skills />
+        <Projects />
+        <EducationLanguages />
+        <Contact />
+      </div>
+    </main>
+    <Footer />
   </div>
 
   <script>

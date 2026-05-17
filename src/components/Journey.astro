@@ -118,7 +118,10 @@ const experiences = [
         <rect width="100%" height="100%" fill="url(#grid)" />
         <rect width="100%" height="100%" fill="url(#scratches)" />
       </svg>
-      <img src="/image/pirat.png" alt="Pirate" class="map-pirate-overlay" width="200" height="200" loading="lazy" />
+      <picture>
+        <source srcset="/image/pirat.webp" type="image/webp" />
+        <img src="/image/pirat.png" alt="" role="presentation" class="map-pirate-overlay" width="200" height="200" loading="lazy" decoding="async" />
+      </picture>
     </div>
   </div>
 </section>

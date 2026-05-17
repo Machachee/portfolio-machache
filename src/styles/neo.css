@@ -963,6 +963,7 @@ body[data-theme="dark"] .job-desc i {
   z-index: 3;
   animation: float-slow 4s ease-in-out infinite;
   filter: drop-shadow(6px 6px 0 var(--border));
+  will-change: transform;
 }
 
 .deco-terminal {
@@ -972,6 +973,7 @@ body[data-theme="dark"] .job-desc i {
   z-index: 3;
   animation: bounce-gentle 2.8s ease-in-out infinite;
   filter: drop-shadow(5px 5px 0 var(--border));
+  will-change: transform;
 }
 
 .deco-terminal.falling {
@@ -986,6 +988,7 @@ body[data-theme="dark"] .job-desc i {
   transform: rotate(-12deg);
   animation: pop-out 3.5s ease-in-out infinite;
   filter: drop-shadow(5px 5px 0 var(--border));
+  will-change: transform;
 }
 
 @keyframes fall-bounce {
@@ -1923,12 +1926,13 @@ body[data-theme="dark"] .stat-number {
   font-weight: 700;
   width: 35px;
   height: 35px;
-  line-height: 35px;
   text-align: center;
   border-radius: 0;
   background: var(--white);
   border-left: 4px solid var(--border);
   border-bottom: 4px solid var(--border);
+  border-top: 4px solid var(--border);
+  border-right: 4px solid var(--border);
   transition: all 0.2s;
 }
 
@@ -2026,6 +2030,7 @@ body[data-theme="dark"] .stat-number {
   position: relative;
   animation: bounce 2s ease-in-out infinite;
   cursor: pointer;
+  will-change: transform;
 }
 
 .neo-marker-pin::after {
@@ -2048,6 +2053,7 @@ body[data-theme="dark"] .stat-number {
   border: 4px solid var(--border);
   box-shadow: 5px 5px 0 var(--border);
   animation: pulse 2s ease-in-out infinite;
+  will-change: transform;
 }
 
 .neo-marker-pin-current::after {

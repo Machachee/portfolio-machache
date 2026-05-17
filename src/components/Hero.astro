@@ -11,9 +11,9 @@
         +4 años de producción, +20 proyectos entregados y estudiante de Ingeniería Informática en la UOC.
       </p>
       <div class="hero-social">
-        <a href="https://github.com/machachee" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/daniramosmerino/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:ramosmerinodaniel@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/machachee" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub de Dani Ramos Merino"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/daniramosmerino/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn de Dani Ramos Merino"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="mailto:ramosmerinodaniel@gmail.com" class="social-btn" aria-label="Enviar email a Dani Ramos Merino"><i class="fas fa-envelope" aria-hidden="true"></i></a>
       </div>
       <div class="hero-cta-container">
         <a href="#contact" class="btn-cta" data-i18n="hero.cta">¡Hablemos!</a>
@@ -22,7 +22,10 @@
     <div class="hero-right">
       <div class="hero-image-wrapper">
         <div class="tape-sticker"></div>
-        <img src="/image/avatar.png" alt="Dani Ramos Merino" class="hero-photo" width="400" height="400" fetchpriority="high" />
+        <picture>
+          <source srcset="/image/avatar.webp" type="image/webp" />
+          <img src="/image/avatar.png" alt="Dani Ramos Merino, Desarrollador Full Stack" class="hero-photo" width="400" height="400" fetchpriority="high" decoding="async" />
+        </picture>
         <div class="deco-code">
           <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="6" y="6" width="88" height="88" rx="8" fill="#9d4edd" stroke="#000" stroke-width="4" />

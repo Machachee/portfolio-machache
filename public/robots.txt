@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://machache.dev/sitemap.xml
+Sitemap: https://machache.vercel.app/sitemap.xml

@@ -79,7 +79,7 @@ const projects: Project[] = [
     tech: ["Astro", "TypeScript", "Tailwind CSS", "Leaflet"],
     image: "/image/portfolio.jpg",
     status: "live",
-    live: "https://machache.dev",
+    live: "https://machache.vercel.app",
     repo: "https://github.com/machachee",
     demo: null, // el propio sitio es la demo
     client: null,
@@ -101,7 +101,10 @@ const statusLabels: Record<ProjectStatus, { es: string; en: string; classMod: st
       return (
         <article class={`project-card ${status.classMod}`}>
           <div class="project-card-image">
-            <img src={project.image} alt={project.title.es} loading="lazy" width="600" height="338" />
+            <picture>
+              <source srcset={project.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+              <img src={project.image} alt={`Captura del proyecto ${project.title.es}`} loading="lazy" decoding="async" width="600" height="338" />
+            </picture>
             <span class="project-status-badge" data-es={status.es} data-en={status.en}>{status.es}</span>
           </div>
           <div class="project-card-body">

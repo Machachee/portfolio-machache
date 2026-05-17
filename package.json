@@ -11,7 +11,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
@@ -22,5 +23,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": []
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }

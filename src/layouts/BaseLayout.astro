@@ -12,7 +12,7 @@ interface Props {
 const {
   title = "Dani Ramos Merino | Desarrollador Full Stack | Headless WordPress, Next.js & PHP",
   description = "Desarrollador Full Stack con más de 3 años de experiencia. WordPress Headless con Next.js + WPGraphQL, WooCommerce, PHP y React. Basado en Valladolid, España.",
-  canonical = "https://machache.dev",
+  canonical = "https://machache.vercel.app",
   ogImage = "/image/avatar.png",
 } = Astro.props;
 ---
@@ -57,14 +57,24 @@ const {
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <link rel="preload" as="image" href="/image/avatar.webp" type="image/webp" fetchpriority="high" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap"
+      /></noscript
+    >
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"

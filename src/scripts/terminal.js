@@ -2150,7 +2150,7 @@ ${this.wrapWithColor("Tip: usa ", "#888888")}${this.wrapWithColor("'open github'
     urlContainer.style.textAlign = "center";
 
     const url = document.createElement("div");
-    url.textContent = "machache.dev";
+    url.textContent = "machache.vercel.app";
     url.style.color = "#87cefa";
     url.style.fontSize = "12px";
     url.style.fontFamily = "'Fira Code', monospace";
