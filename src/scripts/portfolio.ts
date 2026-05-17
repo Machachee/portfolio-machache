@@ -154,9 +154,7 @@ function updateGapParallax() {
   }
 }
 
-window.addEventListener("scroll", updateGapParallax);
-window.addEventListener("resize", updateGapParallax);
-requestAnimationFrame(updateGapParallax);
+window.addEventListener("resize", updateGapParallax, { passive: true });
 
 const highlights = document.querySelectorAll<HTMLElement>(".highlight");
 interface HighlightData { hasStarted: boolean; startScroll: number; duration: number; direction: string; }
@@ -191,8 +189,6 @@ function updateHighlights() {
     }
   });
 }
-window.addEventListener("scroll", updateHighlights);
-requestAnimationFrame(updateHighlights);
 
 const languageItems = document.querySelectorAll<HTMLElement>(".language-item");
 interface LangData { hasStarted: boolean; startScroll: number; stars: NodeListOf<Element>; starDelay: number; }
@@ -227,8 +223,6 @@ function updateLanguageStars() {
     }
   });
 }
-window.addEventListener("scroll", updateLanguageStars);
-requestAnimationFrame(updateLanguageStars);
 
 const journeyTimeline = document.querySelector<HTMLElement>(".journey-timeline");
 const journeyTimelineBack = document.querySelector<HTMLElement>(".journey-timeline-back");
@@ -275,8 +269,6 @@ function updateJourneyTimeline() {
     journeyTimeline.style.overflowY = "hidden";
   }
 }
-window.addEventListener("scroll", updateJourneyTimeline);
-requestAnimationFrame(updateJourneyTimeline);
 
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
@@ -315,26 +307,32 @@ document.querySelectorAll<HTMLAnchorElement>(".nav-link").forEach((link) => {
 });
 
 const navbar = document.querySelector<HTMLElement>(".navbar");
+const navLinks = document.querySelectorAll<HTMLAnchorElement>(".nav-link");
+const sectionsWithId = document.querySelectorAll<HTMLElement>("section[id]");
 let lastScroll = 0;
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
+
+function updateNavbarAndSections() {
+  const currentScroll = window.scrollY;
   if (navbar) {
     if (currentScroll > lastScroll && currentScroll > 100) navbar.classList.add("navbar-hidden");
     else if (currentScroll < lastScroll) navbar.classList.remove("navbar-hidden");
   }
-  document.querySelectorAll<HTMLElement>("section[id]").forEach((section) => {
+  let activeId: string | null = null;
+  sectionsWithId.forEach((section) => {
     const sectionTop = section.offsetTop - 100;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute("id");
     if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
-      document.querySelectorAll<HTMLAnchorElement>(".nav-link").forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${sectionId}`) link.classList.add("active");
-      });
+      activeId = sectionId;
     }
   });
+  if (activeId) {
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+    });
+  }
   lastScroll = currentScroll;
-});
+}
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -403,9 +401,32 @@ checkpoints.forEach((checkpoint) => {
   });
 });
 
-window.addEventListener("scroll", updateProgressBar);
-window.addEventListener("resize", updateProgressBar);
-updateProgressBar();
+window.addEventListener("resize", updateProgressBar, { passive: true });
+
+let scrollPending = false;
+function onScrollMaster() {
+  if (scrollPending) return;
+  scrollPending = true;
+  requestAnimationFrame(() => {
+    scrollPending = false;
+    updateGapParallax();
+    updateHighlights();
+    updateLanguageStars();
+    updateJourneyTimeline();
+    updateNavbarAndSections();
+    updateProgressBar();
+  });
+}
+window.addEventListener("scroll", onScrollMaster, { passive: true });
+
+// Inicializar todas las posiciones una vez en load
+requestAnimationFrame(() => {
+  updateGapParallax();
+  updateHighlights();
+  updateLanguageStars();
+  updateJourneyTimeline();
+  updateProgressBar();
+});
 
 const journeyMapEl = document.getElementById("journey-map");
 if (journeyMapEl) {
