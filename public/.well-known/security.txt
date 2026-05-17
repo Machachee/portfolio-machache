@@ -1,0 +1,4 @@
+Contact: mailto:ramosmerinodaniel@gmail.com
+Expires: 2027-05-17T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://machache.dev/.well-known/security.txt

@@ -1,0 +1,28 @@
+# Normalizar line endings a LF en repo (Linux/Mac/CI), checkout nativo en local
+* text=auto eol=lf
+
+# Archivos binarios: nunca tocar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.pdf binary
+*.zip binary
+
+# Scripts shell siempre LF
+*.sh text eol=lf
+
+# Scripts Windows siempre CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Lockfiles no aparecen en diffs de PR (GitHub)
+pnpm-lock.yaml linguist-generated=true
+package-lock.json linguist-generated=true
+yarn.lock linguist-generated=true

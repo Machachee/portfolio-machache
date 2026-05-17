@@ -1,0 +1,228 @@
+---
+type ProjectStatus = "live" | "in-progress" | "coming-soon" | "private";
+
+interface Project {
+  slug: string;
+  title: { es: string; en: string };
+  description: { es: string; en: string };
+  tech: string[];
+  image: string;
+  status: ProjectStatus;
+  live: string | null;
+  repo: string | null;
+  demo: string | null; // YouTube embed URL, e.g. "https://www.youtube.com/embed/VIDEO_ID"
+  client: { es: string; en: string } | null;
+}
+
+const projects: Project[] = [
+  {
+    slug: "headless-corporate",
+    title: {
+      es: "Web Corporativa Headless (Eventival)",
+      en: "Headless Corporate Site (Eventival)",
+    },
+    description: {
+      es: "WordPress Headless con front en Next.js + Faust.js consumiendo WPGraphQL. Hidratación con fetch y Lighthouse Performance >90. Integrado sistema de scrapping de cines para mostrar programación actualizada en tiempo real.",
+      en: "Headless WordPress with a Next.js + Faust.js front consuming WPGraphQL. Fetch-based hydration and Lighthouse Performance >90. Integrated cinema scraping system to display real-time updated programming.",
+    },
+    tech: ["Next.js", "Faust.js", "WPGraphQL", "WordPress", "PHP", "Python", "TypeScript", "Tailwind CSS"],
+    image: "/image/eventival.jpg",
+    status: "live",
+    live: "https://eventival.es/",
+    repo: null,
+    demo: null, //"https://www.youtube.com/embed/58zBUQTcyuE"
+    client: { es: "Built at Esloogan 360", en: "Built at Esloogan 360" },
+  },
+  {
+    slug: "headless-woocommerce-rggloves",
+    title: {
+      es: "E-commerce Headless Multi-tienda (Rggloves)",
+      en: "Headless Multi-store E-commerce (Rggloves)",
+    },
+    description: {
+      es: "Tiendas WooCommerce a medida con front Next.js. Gestión multi-tienda desde un único back, integración de Stripe + PayPal y checkout personalizado.",
+      en: "Bespoke WooCommerce stores with a Next.js front. Single-back multi-store management, Stripe + PayPal integration and custom checkout.",
+    },
+    tech: ["Next.js", "WooCommerce", "WPGraphQL", "Stripe", "PayPal", "PHP", "TypeScript", "Tailwind CSS"],
+    image: "/image/rggloves.jpg",
+    status: "live",
+    live: "https://rggloves.com/",
+    repo: null,
+    demo: null, // TODO: "https://www.youtube.com/embed/VIDEO_ID" graba checkout + multi-tienda
+    client: { es: "Built at Esloogan 360", en: "Built at Esloogan 360" },
+  },
+  {
+    slug: "reservation-system-sepionet",
+    title: {
+      es: "E-commerce con Sistema de Reservas (Sepionet)",
+      en: "E-commerce with Reservation System (Sepionet)",
+    },
+    description: {
+      es: "Tienda WooCommerce a medida con front Next.js. Gestión de sistema de reservas personalizado desde un único panel de control interno, integración de Redsys y PayPal en checkout personalizado.",
+      en: "Custom WooCommerce store with Next.js front. Personalized reservation system management from a single internal control panel, integration of Redsys and PayPal in personalized checkout.",
+    },
+    tech: ["Next.js", "WooCommerce", "WPGraphQL", "Redsys", "PayPal", "PHP", "TypeScript", "Tailwind CSS"],
+    image: "/image/sepionet.jpg",
+    status: "coming-soon",
+    live: null,
+    repo: null,
+    demo: null, // TODO: añadir video demo cuando el sitio esté en producción
+    client: { es: "Built at Esloogan 360", en: "Built at Esloogan 360" },
+  },
+  {
+    slug: "interactive-portfolio",
+    title: { es: "Portfolio Interactivo", en: "Interactive Portfolio" },
+    description: {
+      es: "Este mismo portfolio: Astro + TypeScript + Tailwind con terminal interactivo, mapa de trayectoria con Leaflet e i18n ES/EN.",
+      en: "This very portfolio: Astro + TypeScript + Tailwind with an interactive terminal, a Leaflet journey map and ES/EN i18n.",
+    },
+    tech: ["Astro", "TypeScript", "Tailwind CSS", "Leaflet"],
+    image: "/image/portfolio.jpg",
+    status: "live",
+    live: "https://machache.dev",
+    repo: "https://github.com/machachee",
+    demo: null, // el propio sitio es la demo
+    client: null,
+  },
+];
+
+const statusLabels: Record<ProjectStatus, { es: string; en: string; classMod: string }> = {
+  live: { es: "En vivo", en: "Live", classMod: "status-live" },
+  "in-progress": { es: "En desarrollo", en: "In development", classMod: "status-progress" },
+  "coming-soon": { es: "Próximamente", en: "Coming soon", classMod: "status-soon" },
+  private: { es: "Código privado", en: "Private code", classMod: "status-private" },
+};
+---
+<section class="section projects-section" id="projects">
+  <h2 class="section-title" data-i18n="projects.title">PROYECTOS</h2>
+  <div class="projects-grid">
+    {projects.map((project) => {
+      const status = statusLabels[project.status];
+      return (
+        <article class={`project-card ${status.classMod}`}>
+          <div class="project-card-image">
+            <img src={project.image} alt={project.title.es} loading="lazy" width="600" height="338" />
+            <span class="project-status-badge" data-es={status.es} data-en={status.en}>{status.es}</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title" data-es={project.title.es} data-en={project.title.en}>{project.title.es}</h3>
+            {project.client && (
+              <p class="project-card-client" data-es={project.client.es} data-en={project.client.en}>{project.client.es}</p>
+            )}
+            <p class="project-card-description" data-es={project.description.es} data-en={project.description.en}>
+              {project.description.es}
+            </p>
+            <div class="project-card-tech">
+              {project.tech.map((t) => (
+                <span class="project-tech-pill">{t}</span>
+              ))}
+            </div>
+            <div class="project-card-actions">
+              {project.demo && (
+                <button
+                  class="project-link project-link-demo project-demo-btn"
+                  data-demo={project.demo}
+                  data-title-es={project.title.es}
+                  data-title-en={project.title.en}
+                  type="button"
+                >
+                  <i class="fas fa-play"></i>
+                  <span data-i18n="projects.viewDemo">Ver demo</span>
+                </button>
+              )}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noopener" class="project-link project-link-primary">
+                  <i class="fas fa-external-link-alt"></i>
+                  <span data-i18n="projects.viewLive">Ver en vivo</span>
+                </a>
+              )}
+              {project.repo && (
+                <a href={project.repo} target="_blank" rel="noopener" class="project-link project-link-secondary">
+                  <i class="fab fa-github"></i>
+                  <span data-i18n="projects.viewRepo">Ver código</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<!-- Demo lightbox modal -->
+<div id="demo-modal" class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" hidden>
+  <div class="demo-modal-backdrop"></div>
+  <div class="demo-modal-content">
+    <div class="demo-modal-header">
+      <span id="demo-modal-title" class="demo-modal-title"></span>
+      <button class="demo-modal-close" aria-label="Cerrar demo" type="button">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="demo-modal-video">
+      <iframe
+        id="demo-modal-iframe"
+        src=""
+        title="Demo video"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  import type { Lang } from "../scripts/i18n";
+
+  const modal = document.getElementById("demo-modal") as HTMLElement | null;
+  const iframe = document.getElementById("demo-modal-iframe") as HTMLIFrameElement | null;
+  const modalTitle = document.getElementById("demo-modal-title") as HTMLElement | null;
+  const closeBtn = modal?.querySelector<HTMLButtonElement>(".demo-modal-close");
+  const backdrop = modal?.querySelector<HTMLElement>(".demo-modal-backdrop");
+
+  function getLang(): Lang {
+    return (localStorage.getItem("lang") as Lang) ?? "es";
+  }
+
+  function toEmbedUrl(url: string): string {
+    // Convierte cualquier formato YouTube a embed:
+    // youtu.be/ID  →  youtube.com/embed/ID
+    // youtube.com/watch?v=ID  →  youtube.com/embed/ID
+    // youtube.com/embed/ID  →  sin cambios
+    const match = url.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
+    );
+    if (match) return `https://www.youtube.com/embed/${match[1]}?rel=0&modestbranding=1`;
+    return url;
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".project-demo-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const rawUrl = btn.dataset.demo ?? "";
+      const url = toEmbedUrl(rawUrl);
+      const lang = getLang();
+      const title = lang === "en" ? (btn.dataset.titleEn ?? "") : (btn.dataset.titleEs ?? "");
+      if (!modal || !iframe || !modalTitle) return;
+      iframe.src = url;
+      modalTitle.textContent = title;
+      modal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+      closeBtn?.focus();
+    });
+  });
+
+  function closeModal() {
+    if (!modal || !iframe) return;
+    iframe.src = "";
+    modal.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+  }
+
+  closeBtn?.addEventListener("click", closeModal);
+  backdrop?.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal?.hasAttribute("hidden")) closeModal();
+  });
+</script>

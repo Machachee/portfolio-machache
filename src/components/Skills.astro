@@ -1,0 +1,114 @@
+---
+const groups = [
+  {
+    icon: "fas fa-code",
+    titleKey: "skills.languages",
+    titleEs: "Lenguajes",
+    tags: [
+      ["fab fa-php", "PHP", null],
+      ["fab fa-js", "JavaScript (ES6+)", null],
+      ["fas fa-code", "TypeScript", null],
+      ["fab fa-html5", "HTML5", null],
+      ["fab fa-css3", "CSS3", null],
+      ["fas fa-database", "SQL", null],
+      ["fab fa-python", "Python", null],
+    ],
+  },
+  {
+    icon: "fab fa-react",
+    titleKey: "skills.frontend",
+    titleEs: "Frontend",
+    tags: [
+      ["fab fa-react", "React.js", null],
+      ["fas fa-n", "Next.js", null],
+      ["fas fa-rocket", "Astro", null],
+      ["fas fa-database", "Redux", null],
+      ["fas fa-wind", "Tailwind CSS", null],
+      ["fab fa-bootstrap", "Bootstrap", null],
+    ],
+  },
+  {
+    icon: "fab fa-node",
+    titleKey: "skills.backend",
+    titleEs: "Backend & APIs",
+    tags: [
+      ["fab fa-node-js", "Node.js (Express)", null],
+      ["fab fa-php", "PHP", null],
+      ["fas fa-project-diagram", "GraphQL (WPGraphQL)", null],
+      ["fas fa-plug", "APIs REST", null],
+      ["fas fa-key", "WP REST + JWT/OAuth", "skills.tag.wpAuth"],
+      ["fas fa-database", "MySQL / MariaDB", null],
+    ],
+  },
+  {
+    icon: "fas fa-store",
+    titleKey: "skills.cms",
+    titleEs: "CMS & E-commerce",
+    tags: [
+      ["fab fa-wordpress", "WordPress", null],
+      ["fas fa-bolt", "WordPress Headless", null],
+      ["fas fa-shopping-cart", "WooCommerce", null],
+      ["fas fa-shopping-basket", "PrestaShop", null],
+      ["fab fa-shopify", "Shopify", null],
+      ["fas fa-cubes", "Faust.js", null],
+      ["fas fa-th-large", "Gutenberg Blocks custom", "skills.tag.gutenberg"],
+      ["fas fa-terminal", "WP-CLI + Composer", null],
+      ["fab fa-stripe", "Stripe", null],
+      ["fab fa-paypal", "PayPal", null],
+    ],
+  },
+  {
+    icon: "fas fa-server",
+    titleKey: "skills.devops",
+    titleEs: "DevOps & Infraestructura",
+    tags: [
+      ["fab fa-git-alt", "Git / GitHub", null],
+      ["fas fa-terminal", "SSH / Linux CLI", "skills.tag.ssh"],
+      ["fas fa-server", "Nginx + Apache", "skills.tag.nginxApache"],
+      ["fas fa-tachometer-alt", "Varnish (cache)", "skills.tag.varnish"],
+      ["fab fa-php", "Gestión versiones PHP", "skills.tag.phpVersions"],
+      ["fas fa-cubes", "npm / pnpm / Vite", null],
+      ["fab fa-chrome", "Chrome DevTools", null],
+    ],
+  },
+  {
+    icon: "fas fa-shield-alt",
+    titleKey: "skills.security",
+    titleEs: "Seguridad & Rendimiento",
+    highlight: true,
+    tags: [
+      ["fas fa-bug", "Limpieza de malware", "skills.tag.malware"],
+      ["fas fa-lock", "Hardening servidores", "skills.tag.hardening"],
+      ["fas fa-shield-virus", "ModSecurity (WAF)", "skills.tag.modsec"],
+      ["fas fa-tachometer-alt", "Core Web Vitals / Lighthouse", null],
+      ["fas fa-search", "SEO Técnico", "skills.tag.seo"],
+      ["fas fa-universal-access", "WCAG / Accesibilidad", "skills.tag.wcag"],
+      ["fas fa-credit-card", "Pasarelas de pago", "skills.tag.payments"],
+    ],
+  },
+];
+---
+<section class="section" id="skills">
+  <h2 class="section-title" data-i18n="skills.title">HABILIDADES</h2>
+  <div class="skills-grid-modern">
+    {groups.map((g) => (
+      <div class={`skill-box${g.highlight ? " highlight-box" : ""}`}>
+        <div class="skill-box-header">
+          <i class={`${g.icon} skill-icon-large`}></i>
+          <h3 class="skill-box-title" data-i18n={g.titleKey}>{g.titleEs}</h3>
+        </div>
+        <div class="tech-tags">
+          {g.tags.map((tag) => {
+            const [icon, label, key] = tag as [string, string, string | null | undefined];
+            return (
+              <span class="tag">
+                <i class={icon}></i>{" "}
+                {key ? <span data-i18n={key}>{label}</span> : label}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,124 @@
+---
+const experiences = [
+  {
+    id: "exp-1",
+    city: "Valladolid",
+    title: { es: "Desarrollador Full Stack & Project Manager @ Esloogan 360", en: "Full Stack Developer & Project Manager @ Esloogan 360" },
+    date: { es: "Feb 2026 - Actualidad", en: "Feb 2026 - Present" },
+    description: {
+      es: "Implementación de arquitecturas WordPress Headless con Next.js, Faust.js y WPGraphQL para webs corporativas y e-commerce. Diseño de tiendas WooCommerce a medida (incluyendo entornos multi-tienda) manteniendo el back-office de WordPress para la gestión del cliente. Hidratación SPA con fetch, integración de pasarelas de pago (Stripe, PayPal, Redsys) y funciones personalizadas. Gestión de despliegues vía SSH, reglas Nginx + Apache para enrutado híbrido Node/PHP y bloques Gutenberg custom. Compatibilizo el rol técnico con gestión de proyectos: comunicación con cliente, deadlines y coordinación del equipo.",
+      en: "Implementing Headless WordPress architectures with Next.js, Faust.js and WPGraphQL for corporate sites and e-commerce. Crafting bespoke WooCommerce stores (including multi-store setups) while keeping the WordPress back-office for client management. SPA fetch hydration, payment gateway integrations (Stripe, PayPal, Redsys) and custom features. SSH deploys, Nginx + Apache rules for hybrid Node/PHP routing and custom Gutenberg blocks. Combining the technical role with project management: client comms, deadlines and team coordination.",
+    },
+    location: { es: "Valladolid, España", en: "Valladolid, Spain" },
+  },
+  {
+    id: "exp-2",
+    city: "Salamanca",
+    title: { es: "Full Stack Web Developer @ DIPE - Desarrollo Web", en: "Full Stack Web Developer @ DIPE - Web Development" },
+    date: { es: "Jun 2022 - Feb 2026", en: "Jun 2022 - Feb 2026" },
+    description: {
+      es: "Desarrollo integral y mantenimiento de más de 20 proyectos web (corporativos y e-commerce). Programación de módulos y plugins en PHP / WP-CLI / Composer para WordPress y PrestaShop. Optimización de Core Web Vitals y SEO técnico, con Lighthouse Performance llevado del rango 40-55 a 90+ en más de 10 proyectos. Configuración de cache server-side con Varnish, reglas ModSecurity (WAF), bastionado y limpieza forense de servidores (10+ sitios recuperados). Gestión de versiones de PHP en upgrades mayores.",
+      en: "End-to-end development and maintenance of 20+ web projects (corporate and e-commerce). Building PHP modules and plugins with WP-CLI / Composer for WordPress and PrestaShop. Core Web Vitals and technical SEO optimisation, with Lighthouse Performance raised from the 40-55 range to 90+ across 10+ projects. Server-side cache configuration with Varnish, ModSecurity (WAF) rules, server hardening and forensic cleanup (10+ sites recovered). PHP major-version upgrade management.",
+    },
+    location: { es: "Salamanca, Castilla y León, España", en: "Salamanca, Castile and León, Spain" },
+  },
+  {
+    id: "exp-3",
+    city: "Valladolid",
+    title: {
+      es: "Web Developer (Prácticas FCT) @ MADISON Experience Marketing",
+      en: "Web Developer (Internship) @ MADISON Experience Marketing",
+    },
+    date: { es: "Oct 2021 - Dic 2021", en: "Oct 2021 - Dec 2021" },
+    description: {
+      es: "Desarrollo de un sistema de control de aforos por QR para el Duero Wine Fest y de la app de tracking 'Pucela Run'. Diseño de bases de datos relacionales para registro de usuarios.",
+      en: "Built a QR-based crowd-control system for the Duero Wine Fest and the 'Pucela Run' tracking app. Designed relational databases for user registration.",
+    },
+    location: { es: "Valladolid, Castilla y León, España", en: "Valladolid, Castile and León, Spain" },
+  },
+];
+---
+<section class="section journey-section" id="experience">
+  <h2 class="section-title-center" data-i18n="journey.title">Mi Trayectoria</h2>
+  <div class="journey-container">
+    <div class="journey-timeline">
+      <h3 class="timeline-header" data-i18n="journey.timeline">Línea de Tiempo</h3>
+      <div class="timeline-list">
+        {experiences.map((exp) => (
+          <div class="timeline-item-flat" id={exp.id} data-country={exp.city}>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content-flat">
+              <h4 class="timeline-title" data-es={exp.title.es} data-en={exp.title.en}>{exp.title.es}</h4>
+              <p class="timeline-date" data-es={exp.date.es} data-en={exp.date.en}>{exp.date.es}</p>
+              <p class="timeline-description" data-es={exp.description.es} data-en={exp.description.en}>{exp.description.es}</p>
+              <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> <span data-es={exp.location.es} data-en={exp.location.en}>{exp.location.es}</span></p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="journey-timeline-back">
+      <svg class="treasure-map-svg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="600" fill="#f4e7d7" />
+        <g transform="translate(320, 80)">
+          <circle cx="0" cy="0" r="35" fill="none" stroke="#8B4513" stroke-width="2" />
+          <circle cx="0" cy="0" r="30" fill="none" stroke="#8B4513" stroke-width="1" />
+          <polygon points="0,-30 5,-10 -5,-10" fill="#D2691E" />
+          <polygon points="0,30 5,10 -5,10" fill="#8B4513" />
+          <polygon points="30,0 10,5 10,-5" fill="#8B4513" />
+          <polygon points="-30,0 -10,5 -10,-5" fill="#8B4513" />
+          <text x="0" y="-40" text-anchor="middle" font-size="16" font-weight="bold" fill="#8B4513">N</text>
+        </g>
+        <path d="M 80,150 Q 120,200 100,250 T 140,350 Q 160,400 200,420" stroke="#D2691E" stroke-width="3" fill="none" stroke-dasharray="8,8" stroke-linecap="round" />
+        <circle cx="80" cy="150" r="8" fill="#8B4513" stroke="#654321" stroke-width="2" />
+        <circle cx="100" cy="250" r="8" fill="#8B4513" stroke="#654321" stroke-width="2" />
+        <circle cx="140" cy="350" r="8" fill="#8B4513" stroke="#654321" stroke-width="2" />
+        <g transform="translate(200, 420)">
+          <circle cx="0" cy="0" r="25" fill="#FFD700" opacity="0.3" />
+          <line x1="-15" y1="-15" x2="15" y2="15" stroke="#DC143C" stroke-width="4" stroke-linecap="round" />
+          <line x1="15" y1="-15" x2="-15" y2="15" stroke="#DC143C" stroke-width="4" stroke-linecap="round" />
+        </g>
+        <g opacity="0.4">
+          <polygon points="250,200 270,150 290,200" fill="#8B4513" />
+          <polygon points="280,200 300,160 320,200" fill="#A0522D" />
+          <polygon points="220,220 245,170 270,220" fill="#8B4513" />
+        </g>
+        <g opacity="0.4">
+          <polygon points="100,450 110,420 120,450" fill="#228B22" />
+          <rect x="108" y="450" width="4" height="15" fill="#8B4513" />
+          <polygon points="150,480 160,450 170,480" fill="#228B22" />
+          <rect x="158" y="480" width="4" height="15" fill="#8B4513" />
+          <polygon points="70,500 80,470 90,500" fill="#228B22" />
+          <rect x="78" y="500" width="4" height="15" fill="#8B4513" />
+        </g>
+        <g opacity="0.3">
+          <path d="M 40,300 Q 50,295 60,300 T 80,300" stroke="#4682B4" stroke-width="2" fill="none" />
+          <path d="M 40,310 Q 50,305 60,310 T 80,310" stroke="#4682B4" stroke-width="2" fill="none" />
+          <path d="M 280,520 Q 290,515 300,520 T 320,520" stroke="#4682B4" stroke-width="2" fill="none" />
+          <path d="M 280,530 Q 290,525 300,530 T 320,530" stroke="#4682B4" stroke-width="2" fill="none" />
+        </g>
+        <rect x="10" y="10" width="380" height="580" fill="none" stroke="#8B4513" stroke-width="3" stroke-dasharray="10,5" />
+      </svg>
+    </div>
+    <div class="journey-map-container">
+      <div id="journey-map"></div>
+      <svg class="map-overlay-lines" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#000" stroke-width="2" opacity="0.8" />
+          </pattern>
+          <pattern id="scratches" width="200" height="200" patternUnits="userSpaceOnUse">
+            <line x1="10" y1="20" x2="60" y2="25" stroke="#000" stroke-width="2" opacity="0.7" />
+            <line x1="100" y1="50" x2="180" y2="48" stroke="#000" stroke-width="1.5" opacity="0.6" />
+            <line x1="30" y1="120" x2="90" y2="115" stroke="#000" stroke-width="2" opacity="0.7" />
+            <line x1="140" y1="160" x2="195" y2="165" stroke="#000" stroke-width="1.5" opacity="0.6" />
+            <line x1="5" y1="180" x2="45" y2="175" stroke="#000" stroke-width="1.5" opacity="0.6" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <rect width="100%" height="100%" fill="url(#scratches)" />
+      </svg>
+      <img src="/image/pirat.png" alt="Pirate" class="map-pirate-overlay" width="200" height="200" loading="lazy" />
+    </div>
+  </div>
+</section>

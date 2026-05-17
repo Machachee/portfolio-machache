@@ -1,0 +1,57 @@
+---
+const languages = [
+  { name: { es: "Español", en: "Spanish" }, level: 3 },
+  { name: { es: "Inglés", en: "English" }, level: 2 },
+];
+const educations = [
+  {
+    title: { es: "Grado en Ingeniería Informática", en: "BSc in Computer Engineering" },
+    school: { es: "Universitat Oberta de Catalunya (UOC)", en: "Universitat Oberta de Catalunya (UOC)" },
+    badge: { es: "2024 - Actualidad", en: "2024 - Present" },
+    location: { es: "Online, España", en: "Online, Spain" },
+  },
+  {
+    title: {
+      es: "Técnico Superior en Desarrollo de Aplicaciones Web",
+      en: "Higher Technician in Web Application Development",
+    },
+    school: { es: "C.I.F.P. Ponferrada", en: "C.I.F.P. Ponferrada" },
+    badge: { es: "2019 - 2022", en: "2019 - 2022" },
+    location: { es: "Ponferrada, España", en: "Ponferrada, Spain" },
+  },
+];
+---
+<section class="section education-languages-section">
+  <div class="education-languages-grid">
+    <div class="education-column">
+      <h2 class="section-title" data-i18n="edu.title">EDUCACIÓN</h2>
+      {educations.map((edu) => (
+        <div class="card education-card">
+          <div class="education-header">
+            <div>
+              <h3 class="education-title" data-es={edu.title.es} data-en={edu.title.en}>{edu.title.es}</h3>
+              <p class="education-school" data-es={edu.school.es} data-en={edu.school.en}>{edu.school.es}</p>
+            </div>
+            <span class="badge" data-es={edu.badge.es} data-en={edu.badge.en}>{edu.badge.es}</span>
+          </div>
+          <p class="education-location"><i class="fas fa-map-marker-alt"></i> <span data-es={edu.location.es} data-en={edu.location.en}>{edu.location.es}</span></p>
+        </div>
+      ))}
+    </div>
+    <div class="languages-column">
+      <h2 class="section-title" data-i18n="lang.title">IDIOMAS</h2>
+      <div class="card languages-card">
+        {languages.map((lang) => (
+          <div class="language-item">
+            <span class="language-name-inline" data-es={lang.name.es} data-en={lang.name.en}>{lang.name.es}</span>
+            <div class="language-stars">
+              {[1, 2, 3].map((i) => (
+                <span class={`star${i <= lang.level ? " filled" : ""}`}></span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

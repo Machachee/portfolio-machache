@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://machache.dev/sitemap.xml

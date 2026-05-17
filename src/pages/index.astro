@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProgressBar from "../components/ProgressBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import PaperTear from "../components/PaperTear.astro";
+import About from "../components/About.astro";
+import Journey from "../components/Journey.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import EducationLanguages from "../components/EducationLanguages.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+
+---
+
+<BaseLayout>
+  <div class="page-wrapper">
+    <ProgressBar />
+    <Navbar />
+    <Hero />
+
+    <PaperTear position="top" />
+    <div class="page-gap"></div>
+    <PaperTear position="bottom" />
+    <div class="tear-tape-sticker"></div>
+
+    <div class="container">
+      <About />
+      <Journey />
+      <Skills />
+      <Projects />
+      <EducationLanguages />
+      <Contact />
+      <Footer />
+    </div>
+  </div>
+
+  <script>
+    import "../scripts/portfolio.ts";
+  </script>
+</BaseLayout>

@@ -1,0 +1,186 @@
+---
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+---
+<section class="section" id="contact">
+  <h2 class="section-title" data-i18n="contact.title">HABLEMOS</h2>
+  <div class="contact-container-compact">
+    <p class="contact-intro" data-i18n="contact.intro">¿Tienes un proyecto en mente? Construyamos algo juntos.</p>
+    <div class="contact-grid">
+      <a href="https://www.linkedin.com/in/daniramosmerino/" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/machachee" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <i class="fab fa-github"></i><span>GitHub</span>
+      </a>
+      <a href="mailto:ramosmerinodaniel@gmail.com" class="contact-card">
+        <i class="fas fa-envelope"></i><span>Email</span>
+      </a>
+    </div>
+
+    <form
+      id="contact-form"
+      class="contact-form"
+      action="https://formspree.io/f/xaqvadvl"
+      method="POST"
+      autocomplete="on"
+      novalidate
+    >
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde machache.dev" />
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+      <input type="hidden" name="ts" id="cf-ts" value="" />
+      <div class="contact-form-row">
+        <div class="contact-form-field">
+          <label for="cf-name" data-i18n="contact.form.name">Nombre</label>
+          <input
+            type="text"
+            id="cf-name"
+            name="name"
+            required
+            maxlength="100"
+            data-i18n-attr="placeholder:contact.form.namePlaceholder"
+            placeholder="Tu nombre"
+          />
+        </div>
+        <div class="contact-form-field">
+          <label for="cf-email" data-i18n="contact.form.email">Email</label>
+          <input
+            type="email"
+            id="cf-email"
+            name="email"
+            required
+            maxlength="200"
+            data-i18n-attr="placeholder:contact.form.emailPlaceholder"
+            placeholder="tu@email.com"
+          />
+        </div>
+      </div>
+      <div class="contact-form-field">
+        <label for="cf-message" data-i18n="contact.form.message">Mensaje</label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows="5"
+          required
+          maxlength="5000"
+          data-i18n-attr="placeholder:contact.form.messagePlaceholder"
+          placeholder="Cuéntame sobre tu proyecto..."
+        ></textarea>
+      </div>
+      {turnstileSiteKey && (
+        <div class="contact-form-field">
+          <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="auto"></div>
+        </div>
+      )}
+      <div class="contact-form-footer">
+        <button type="submit" class="contact-form-submit" id="contact-submit-btn">
+          <i class="fas fa-paper-plane" id="contact-btn-icon"></i>
+          <span id="contact-btn-text" data-i18n="contact.form.submit">Enviar mensaje</span>
+        </button>
+      </div>
+    </form>
+    <div id="contact-feedback" class="contact-feedback" hidden></div>
+  </div>
+</section>
+
+{turnstileSiteKey && (
+  <script
+    is:inline
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer
+  ></script>
+)}
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const submitBtn = document.getElementById("contact-submit-btn") as HTMLButtonElement | null;
+  const btnIcon = document.getElementById("contact-btn-icon") as HTMLElement | null;
+  const btnText = document.getElementById("contact-btn-text") as HTMLElement | null;
+  const feedback = document.getElementById("contact-feedback") as HTMLElement | null;
+  const tsInput = document.getElementById("cf-ts") as HTMLInputElement | null;
+
+  const formLoadTime = Date.now();
+  const MIN_SUBMIT_MS = 3000;
+  const MAX_SUBMIT_MS = 1000 * 60 * 60;
+
+  if (tsInput) tsInput.value = String(formLoadTime);
+
+  const lang = () => localStorage.getItem("lang") ?? "es";
+
+  const messages = {
+    sending: { es: "Enviando...", en: "Sending..." },
+    success: { es: "¡Mensaje enviado! Te responderé lo antes posible.", en: "Message sent! I'll reply as soon as possible." },
+    error:   { es: "Error al enviar tu mensaje. Prueba por email directo.", en: "Send failed sending the message. Try direct email." },
+    tooFast: { es: "Espera un momento antes de enviar.", en: "Wait a moment before sending." },
+    expired: { es: "Formulario caducado. Recarga la página.", en: "Form expired. Reload the page." },
+    botDetected: { es: "Verificación fallida.", en: "Verification failed." },
+    captcha: { es: "Completa la verificación anti-bot.", en: "Complete the anti-bot challenge." },
+  };
+
+  function showError(msg: string) {
+    if (!submitBtn || !btnIcon || !btnText || !feedback) return;
+    submitBtn.disabled = false;
+    btnIcon.className = "fas fa-paper-plane";
+    btnText.textContent = msg;
+    feedback.removeAttribute("hidden");
+    feedback.className = "contact-feedback contact-feedback-error";
+    feedback.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${msg}`;
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !btnIcon || !btnText || !feedback || !form) return;
+
+    const l = lang() as "es" | "en";
+
+    const honeypotA = (form.elements.namedItem("_gotcha") as HTMLInputElement | null)?.value;
+    const honeypotB = (form.elements.namedItem("website") as HTMLInputElement | null)?.value;
+    if (honeypotA || honeypotB) {
+      showError(messages.botDetected[l]);
+      return;
+    }
+
+    const elapsed = Date.now() - formLoadTime;
+    if (elapsed < MIN_SUBMIT_MS) {
+      showError(messages.tooFast[l]);
+      return;
+    }
+    if (elapsed > MAX_SUBMIT_MS) {
+      showError(messages.expired[l]);
+      return;
+    }
+
+    const turnstileField = form.querySelector<HTMLElement>(".cf-turnstile");
+    if (turnstileField) {
+      const tokenInput = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]');
+      if (!tokenInput || !tokenInput.value) {
+        showError(messages.captcha[l]);
+        return;
+      }
+    }
+
+    submitBtn.disabled = true;
+    btnIcon.className = "fas fa-spinner fa-spin";
+    btnText.textContent = messages.sending[l];
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        form.style.display = "none";
+        feedback.removeAttribute("hidden");
+        feedback.className = "contact-feedback contact-feedback-success";
+        feedback.innerHTML = `<i class="fas fa-check-circle"></i> ${messages.success[l]}`;
+      } else {
+        throw new Error("non-ok");
+      }
+    } catch {
+      showError(messages.error[l]);
+    }
+  });
+</script>

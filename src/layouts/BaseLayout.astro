@@ -1,0 +1,137 @@
+---
+import "../styles/global.css";
+import "../styles/neo.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Dani Ramos Merino | Desarrollador Full Stack | Headless WordPress, Next.js & PHP",
+  description = "Desarrollador Full Stack con más de 3 años de experiencia. WordPress Headless con Next.js + WPGraphQL, WooCommerce, PHP y React. Basado en Valladolid, España.",
+  canonical = "https://machache.dev",
+  ogImage = "/image/avatar.png",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Dani Ramos Merino, Daniel Ramos Merino, Desarrollador Full Stack, Full Stack Developer, PHP, React, Next.js, Node.js, JavaScript, TypeScript, WordPress, WordPress Headless, WooCommerce, Faust.js, WPGraphQL, GraphQL, Stripe, PayPal, PrestaShop, Tailwind CSS, SEO Técnico, Core Web Vitals, Valladolid, España, Castilla y León"
+    />
+    <meta name="author" content="Dani Ramos Merino" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+
+    <meta name="geo.region" content="ES-CL" />
+    <meta name="geo.placename" content="Valladolid" />
+    <meta name="geo.position" content="41.6529;-4.7286" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Dani Ramos Merino" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Dani Ramos Merino - Desarrollador Full Stack" />
+    <meta property="og:locale" content="es_ES" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image:alt" content="Dani Ramos Merino - Desarrollador Full Stack" />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      /></noscript
+    >
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniel Ramos Merino",
+      "alternateName": "Dani Ramos Merino",
+      "url": canonical,
+      "jobTitle": "Desarrollador Full Stack",
+      "worksFor": { "@type": "Organization", "name": "Esloogan 360" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Valladolid",
+        "addressRegion": "Castilla y León",
+        "addressCountry": "España",
+      },
+      "alumniOf": [
+        { "@type": "EducationalOrganization", "name": "Universitat Oberta de Catalunya" },
+        { "@type": "EducationalOrganization", "name": "C.I.F.P. Ponferrada" },
+      ],
+      "knowsAbout": [
+        "Full-Stack Development",
+        "PHP",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "WordPress",
+        "Headless WordPress",
+        "WooCommerce",
+        "Faust.js",
+        "WPGraphQL",
+        "GraphQL",
+        "Stripe",
+        "PayPal",
+        "PrestaShop",
+        "Tailwind CSS",
+        "SEO Técnico",
+        "Core Web Vitals",
+        "Ciberseguridad Web",
+      ],
+      "email": "ramosmerinodaniel@gmail.com",
+      "sameAs": [
+        "https://github.com/machachee",
+        "https://www.linkedin.com/in/daniramosmerino/",
+      ],
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
