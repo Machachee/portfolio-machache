@@ -1,5 +1,3 @@
-import "leaflet/dist/leaflet.css";
-import { initJourneyMap } from "./journey-map";
 import { applyTranslations, getStoredLang, setStoredLang, type Lang } from "./i18n";
 
 let currentLang: Lang = getStoredLang();
@@ -409,4 +407,27 @@ window.addEventListener("scroll", updateProgressBar);
 window.addEventListener("resize", updateProgressBar);
 updateProgressBar();
 
-initJourneyMap();
+const journeyMapEl = document.getElementById("journey-map");
+if (journeyMapEl) {
+  let mapLoaded = false;
+  const loadMap = async () => {
+    if (mapLoaded) return;
+    mapLoaded = true;
+    await import("leaflet/dist/leaflet.css");
+    const { initJourneyMap } = await import("./journey-map");
+    initJourneyMap();
+  };
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          loadMap();
+          io.disconnect();
+          break;
+        }
+      }
+    },
+    { rootMargin: "200px 0px" },
+  );
+  io.observe(journeyMapEl);
+}

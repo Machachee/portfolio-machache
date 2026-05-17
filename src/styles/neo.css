@@ -2228,11 +2228,11 @@ body[data-theme="dark"] .map-popup-company span {
 }
 
 .highlight-cyan::before {
-  background: var(--cyan);
+  background: #b07ce8;
 }
 
 .highlight-pink::before {
-  background: var(--pink);
+  background: #ffa3bf;
 }
 
 .highlight-green::before {
