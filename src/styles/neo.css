@@ -25,11 +25,13 @@ html {
 }
 
 body[data-theme="dark"] {
-  --bg: #1a1a1a;
-  --text: #ffffff;
-  --border: #c1ff72;
-  --white: #2a2a2a;
-  background: #0a0a0a;
+  --bg: #1a1a1f;
+  --text: #f2f2f3;
+  --border: #d8d8dc;
+  --white: #26262b;
+  /* lime (--accent) reads badly behind white text; deeper green for text backgrounds */
+  --accent-deep: #2e9e54;
+  background: #0c0c0f;
 }
 
 /* Progress Bar */
@@ -199,7 +201,7 @@ body[data-theme="dark"] .page-wrapper {
 }
 
 body[data-theme="dark"] .navbar {
-  background: #2a2a2a;
+  background: var(--white);
 }
 
 body[data-theme="dark"] .hero {
@@ -368,7 +370,7 @@ body[data-theme="dark"] .section-title {
 }
 
 body[data-theme="dark"] .highlight-box {
-  background: var(--accent);
+  background: var(--accent-deep);
 }
 
 body[data-theme="dark"] .timeline-marker {
@@ -566,6 +568,10 @@ body[data-theme="dark"] .job-desc i {
 .lang-toggle-nav:hover {
   transform: translate(3px, 3px);
   box-shadow: 0 0 0 var(--border);
+}
+
+body[data-theme="dark"] .lang-toggle-nav {
+  background: var(--accent-deep);
 }
 
 .lang-toggle-flag {
@@ -1025,6 +1031,10 @@ body[data-theme="dark"] .job-desc i {
   white-space: nowrap;
   z-index: 3;
   font-size: 1.1rem;
+}
+
+body[data-theme="dark"] .deco-label {
+  background: var(--accent-deep);
 }
 
 .tech-badges {
@@ -1903,6 +1913,7 @@ body[data-theme="dark"] .stat-number {
 /* Leaflet popup styling */
 .leaflet-popup-content-wrapper {
   background: var(--white);
+  color: var(--text);
   border: 4px solid var(--border);
   border-radius: 0;
   box-shadow: 6px 6px 0 var(--border);
@@ -1937,9 +1948,7 @@ body[data-theme="dark"] .stat-number {
 }
 
 .leaflet-container a.leaflet-popup-close-button:hover {
-  background: var(--yellow);
-  color: var(--text);
-  transform: translate(2px, 2px);
+  color: var(--yellow);
 }
 
 .map-popup {
@@ -1983,6 +1992,7 @@ body[data-theme="dark"] .stat-number {
 
 .map-popup-company small {
   font-size: 0.85rem;
+  color: var(--text);
   opacity: 0.8;
   display: block;
   font-family: 'Space Mono', monospace;
@@ -2237,6 +2247,10 @@ body[data-theme="dark"] .map-popup-company span {
 
 .highlight-green::before {
   background: var(--accent);
+}
+
+body[data-theme="dark"] .highlight-green::before {
+  background: var(--accent-deep);
 }
 
 .timeline {
@@ -2495,6 +2509,9 @@ body[data-theme="dark"] .map-popup-company span {
 .skill-box:nth-child(6) .tag:hover { background: var(--pink); }
 .skill-box:nth-child(7) .tag:hover { background: var(--yellow); }
 .skill-box:nth-child(8) .tag:hover { background: var(--accent); }
+
+body[data-theme="dark"] .skill-box:nth-child(4) .tag:hover,
+body[data-theme="dark"] .skill-box:nth-child(8) .tag:hover { background: var(--accent-deep); }
 
 .skill-box .tag i {
   font-size: 1.1rem;
@@ -3352,6 +3369,9 @@ body[data-theme="dark"] .language-item:hover {
 .project-link-primary { background: var(--accent); }
 .project-link-secondary { background: var(--bg); }
 .project-link-demo { background: var(--primary); color: #fff; }
+
+body[data-theme="dark"] .project-link-primary,
+body[data-theme="dark"] .status-live .project-status-badge { background: var(--accent-deep); }
 
 body[data-theme="dark"] .project-card,
 body[data-theme="dark"] .project-tech-pill {

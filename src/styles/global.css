@@ -41,11 +41,12 @@
   }
 
   body[data-theme="dark"] {
-    --bg: #1a1a1a;
-    --text: #ffffff;
-    --border: #c1ff72;
-    --white: #2a2a2a;
-    background: #0a0a0a;
+    --bg: #1a1a1f;
+    --text: #f2f2f3;
+    --border: #d8d8dc;
+    --white: #26262b;
+    --accent-deep: #2e9e54;
+    background: #0c0c0f;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }

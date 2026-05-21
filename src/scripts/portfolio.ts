@@ -156,15 +156,20 @@ function updateGapParallax() {
 
 window.addEventListener("resize", updateGapParallax, { passive: true });
 
-const highlights = document.querySelectorAll<HTMLElement>(".highlight");
 interface HighlightData { hasStarted: boolean; startScroll: number; duration: number; direction: string; }
-const highlightData = new Map<HTMLElement, HighlightData>();
+let highlights = document.querySelectorAll<HTMLElement>(".highlight");
+let highlightData = new Map<HTMLElement, HighlightData>();
 
-highlights.forEach((highlight, index) => {
-  const direction = index % 2 === 0 ? "left" : "right";
-  highlight.setAttribute("data-direction", direction);
-  highlightData.set(highlight, { hasStarted: false, startScroll: 0, duration: 100, direction });
-});
+function initHighlights() {
+  highlights = document.querySelectorAll<HTMLElement>(".highlight");
+  highlightData = new Map<HTMLElement, HighlightData>();
+  highlights.forEach((highlight, index) => {
+    const direction = index % 2 === 0 ? "left" : "right";
+    highlight.setAttribute("data-direction", direction);
+    highlightData.set(highlight, { hasStarted: false, startScroll: 0, duration: 100, direction });
+  });
+}
+initHighlights();
 
 function updateHighlights() {
   const scrollY = window.scrollY;
@@ -189,6 +194,30 @@ function updateHighlights() {
     }
   });
 }
+
+// Al cambiar idioma, applyTranslations() reescribe el innerHTML de los párrafos
+// con data-i18n-html: los <span class="highlight"> se recrean y se pierde su estado.
+// Volvemos a registrarlos y damos por completados los que ya quedaron sobre el scroll.
+function refreshHighlights() {
+  initHighlights();
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+  highlights.forEach((highlight) => {
+    const data = highlightData.get(highlight);
+    if (!data) return;
+    const rect = highlight.getBoundingClientRect();
+    const elementTop = rect.top + scrollY;
+    const triggerPoint = scrollY + windowHeight * 0.8;
+    if (triggerPoint >= elementTop) {
+      data.hasStarted = true;
+      data.startScroll = scrollY - data.duration;
+      highlight.style.setProperty("--highlight-progress", "100%");
+    }
+  });
+  updateHighlights();
+}
+
+document.addEventListener("langchange", refreshHighlights);
 
 const languageItems = document.querySelectorAll<HTMLElement>(".language-item");
 interface LangData { hasStarted: boolean; startScroll: number; stars: NodeListOf<Element>; starDelay: number; }
@@ -293,6 +322,7 @@ if (themeToggle) {
     body.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
     updateIcon(newTheme);
+    refreshHighlights();
   });
 }
 

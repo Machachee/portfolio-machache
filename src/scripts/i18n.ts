@@ -19,7 +19,7 @@ export const translations: Record<string, Entry> = {
   "hero.greeting": { es: "¡Hola! 👋", en: "Hi there! 👋" },
   "hero.name": { es: "Soy Dani Ramos.", en: "I'm Dani Ramos." },
   "hero.description": {
-    es: "Desarrollador Full Stack basado en Valladolid, España. Construyo soluciones web seguras y escalables: desde arquitecturas WordPress Headless con Next.js + WPGraphQL hasta e-commerce a medida (WooCommerce, PrestaShop). +4 años de producción, +20 proyectos entregados y estudiante de Ingeniería Informática en la UOC.",
+    es: "Desarrollador Full Stack residiendo en Valladolid, España. Creo soluciones web seguras y escalables: desde arquitecturas WordPress Headless con Next.js + WPGraphQL hasta e-commerce a medida (WooCommerce, PrestaShop). Tengo a mis espaldas más de 4 años en producción y más de 20 proyectos entregados. Actualmente me encuentro cursando Ingeniería Informática en la UOC.",
     en: "Full Stack Developer based in Valladolid, Spain. I build secure, scalable web solutions: from Headless WordPress architectures with Next.js + WPGraphQL to bespoke e-commerce (WooCommerce, PrestaShop). 4+ years in production, 20+ delivered projects and Computer Engineering student at UOC.",
   },
   "hero.cta": { es: "¡Hablemos!", en: "Let's talk!" },
@@ -27,15 +27,15 @@ export const translations: Record<string, Entry> = {
 
   "about.title": { es: "SOBRE MÍ", en: "ABOUT ME" },
   "about.p1.html": {
-    es: 'Desarrollador Full Stack con <span class="highlight highlight-yellow">más de 4 años</span> de experiencia en entornos de producción, gestionando <span class="highlight highlight-cyan">+20 proyectos</span> web entre corporativos y e-commerce. Especializado en arquitecturas <span class="highlight highlight-pink">Headless con Next.js + WPGraphQL</span> y en stack CMS y e-commerce, cubriendo el ciclo completo desde toma de requisitos hasta despliegue.',
+    es: 'Desarrollador Full Stack con <span class="highlight highlight-yellow">más de 4 años</span> de experiencia en entornos de producción, donde he gestionado <span class="highlight highlight-cyan">más de 20 proyectos</span> web entre corporativos y e-commerce. Especializado en arquitecturas <span class="highlight highlight-pink">Headless con Next.js + WPGraphQL</span> y en el stack de CMS y e-commerce, me ocupo del ciclo completo: desde la toma de requisitos hasta el despliegue.',
     en: 'Full Stack Developer with <span class="highlight highlight-yellow">4+ years</span> of production experience, having delivered <span class="highlight highlight-cyan">20+ web projects</span> across corporate sites and e-commerce. Specialised in <span class="highlight highlight-pink">Headless architectures with Next.js + WPGraphQL</span> and CMS / e-commerce stack, owning the full lifecycle from requirements to deployment.',
   },
   "about.p2.html": {
-    es: 'Aporto experiencia real en <span class="highlight highlight-cyan">optimización de Core Web Vitals</span> (Lighthouse Performance llevado del rango 40-55 a <span class="highlight highlight-yellow">90+</span> en más de 10 proyectos), <span class="highlight highlight-pink">SEO técnico</span> y configuración de capas de cache como <span class="highlight highlight-green">Varnish</span> y CDN. En despliegues headless gestiono SSH, reglas Nginx + Apache para enrutado híbrido Node/PHP y migraciones críticas entre versiones mayores de PHP.',
+    es: 'Tengo experiencia real en <span class="highlight highlight-cyan">optimización de Core Web Vitals</span> (he subido la puntuación de Lighthouse Performance del rango 40-55 a <span class="highlight highlight-yellow">90+</span> en más de 10 proyectos), <span class="highlight highlight-pink">SEO técnico</span> y configuración de capas de caché como <span class="highlight highlight-green">Varnish</span> y CDN. En despliegues headless me encargo de SSH, las reglas de Nginx + Apache para el enrutado híbrido Node/PHP y las migraciones críticas entre versiones mayores de PHP.',
     en: 'Hands-on experience in <span class="highlight highlight-cyan">Core Web Vitals optimisation</span> (Lighthouse Performance raised from the 40-55 range to <span class="highlight highlight-yellow">90+</span> across 10+ projects), <span class="highlight highlight-pink">technical SEO</span> and configuring cache layers like <span class="highlight highlight-green">Varnish</span> and CDN. On headless deploys I manage SSH, Nginx + Apache rules for hybrid Node/PHP routing, and critical PHP major-version migrations.',
   },
   "about.p3.html": {
-    es: 'En el lado de seguridad: <span class="highlight highlight-pink">recuperación de sitios comprometidos</span> (más de 10 limpiezas forenses), bastionado de servidores y reglas <span class="highlight highlight-cyan">ModSecurity (WAF)</span>. Compagino el trabajo técnico con <span class="highlight highlight-green">gestión de proyectos</span>: comunicación con cliente, cumplimiento de deadlines y coordinación del equipo. Actualmente curso el <span class="highlight highlight-yellow">Grado en Ingeniería Informática en la UOC</span> para profundizar en arquitectura de software y algoritmos.',
+    es: 'En materia de seguridad: <span class="highlight highlight-pink">recuperación de sitios comprometidos</span> (más de 10 limpiezas forenses), bastionado de servidores y reglas <span class="highlight highlight-cyan">ModSecurity (WAF)</span>. Compagino el trabajo técnico con la <span class="highlight highlight-green">gestión de proyectos</span>: trato con el cliente, cumplimiento de plazos y coordinación del equipo. Actualmente curso el <span class="highlight highlight-yellow">Grado en Ingeniería Informática en la UOC</span> para profundizar en arquitectura de software y algoritmos.',
     en: 'On the security side: <span class="highlight highlight-pink">recovery of compromised sites</span> (10+ forensic cleanups), server hardening and <span class="highlight highlight-cyan">ModSecurity (WAF)</span> rules. I combine deep technical work with <span class="highlight highlight-green">project management</span>: client communication, deadline delivery and team coordination. Currently studying <span class="highlight highlight-yellow">Computer Engineering at UOC</span> to deepen my knowledge of software architecture and algorithms.',
   },
 
@@ -96,8 +96,8 @@ export const translations: Record<string, Entry> = {
     en: "Dani Ramos Merino | Full Stack Developer | Headless WordPress, Next.js & PHP",
   },
   "page.description": {
-    es: "Desarrollador Full Stack con más de 3 años de experiencia. WordPress Headless con Next.js + WPGraphQL, WooCommerce, PHP y React. Basado en Valladolid, España.",
-    en: "Full Stack Developer with 3+ years of experience. Headless WordPress with Next.js + WPGraphQL, WooCommerce, PHP and React. Based in Valladolid, Spain.",
+    es: "Desarrollador Full Stack con más de 4 años de experiencia. WordPress Headless con Next.js + WPGraphQL, WooCommerce, PHP y React. Afincado en Valladolid, España.",
+    en: "Full Stack Developer with 4+ years of experience. Headless WordPress with Next.js + WPGraphQL, WooCommerce, PHP and React. Based in Valladolid, Spain.",
   },
 };
 

@@ -872,7 +872,7 @@ ${this.wrapWithColor(
       "#ffffff"
     )}
 • ${this.wrapWithColor("Liderazgo", "#ffa07a")} - ${this.wrapWithColor(
-      "Gestión de proyectos: comunicación con cliente, deadlines y coordinación del equipo técnico.",
+      "Gestión de proyectos: trato con el cliente, control de plazos y coordinación del equipo técnico.",
       "#ffffff"
     )}
 
@@ -912,7 +912,7 @@ ${this.wrapWithColor(
       "#ffffff"
     )}
 • ${this.wrapWithColor("Migraciones PHP", "#ffa07a")} - ${this.wrapWithColor(
-      "Gestión de versiones críticas en upgrades mayores sin downtime.",
+      "Gestión de versiones críticas de PHP en actualizaciones mayores sin caídas de servicio.",
       "#ffffff"
     )}
 
@@ -1057,7 +1057,7 @@ ${this.wrapWithColor("▸ DevOps / Infraestructura", "#ff8c42")}
 • ${this.wrapWithColor("SSH / Linux CLI", "#ffffff")}
 • ${this.wrapWithColor("Nginx + Apache (enrutado híbrido Node/PHP)", "#ffffff")}
 • ${this.wrapWithColor("Varnish (cache server-side)", "#ffffff")}
-• ${this.wrapWithColor("Gestión versiones PHP en upgrades mayores", "#ffffff")}
+• ${this.wrapWithColor("Gestión de versiones de PHP en actualizaciones mayores", "#ffffff")}
 • ${this.wrapWithColor("npm / pnpm / Vite", "#ffffff")}
 • ${this.wrapWithColor("WP-CLI + Composer", "#ffffff")}
 
@@ -1069,7 +1069,7 @@ ${this.wrapWithColor("▸ Seguridad / Rendimiento", "#ff8c42")}
 
 ${this.wrapWithColor("▸ Liderazgo / Proceso", "#ff8c42")}
 • ${this.wrapWithColor("Gestión de proyectos (PM)", "#ffffff")}
-• ${this.wrapWithColor("Comunicación con cliente + deadlines", "#ffffff")}
+• ${this.wrapWithColor("Trato con el cliente + control de plazos", "#ffffff")}
 • ${this.wrapWithColor("Coordinación equipo técnico", "#ffffff")}`;
 
     const skillsDiv = document.createElement("div");
@@ -1258,7 +1258,7 @@ ${this.wrapWithColor("╰──────────────────�
           "about.txt": {
             type: "file",
             content:
-              "Daniel Ramos Merino   Desarrollador Full Stack con 3+ años en producción. PHP, JavaScript (React/Node.js), WordPress y PrestaShop. Valladolid, España.",
+              "Daniel Ramos Merino   Desarrollador Full Stack con 4+ años en producción. PHP, JavaScript (React/Node.js), WordPress y PrestaShop. Valladolid, España.",
           },
           "skills.md": {
             type: "file",
