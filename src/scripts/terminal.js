@@ -843,7 +843,7 @@ ${this.wrapWithColor(
 
 <span style="color: #c1ff72;">ESLOOGAN 360 | Desarrollador Full Stack & Project Manager</span>
 ${this.wrapWithColor(
-  "Feb 2026 - Actualidad | Valladolid, España",
+  "Feb 2026 - May 2026 | Valladolid, España",
   "#ffffff"
 )}
 ${this.wrapWithColor(
@@ -1268,7 +1268,7 @@ ${this.wrapWithColor("╰──────────────────�
           "experience.md": {
             type: "file",
             content:
-              "# Experiencia\n- Esloogan 360 (Feb 2026 - Actualidad)   Headless WP + Next.js + WooCommerce\n- DIPE Desarrollo Web (Jun 2022 - Feb 2026)   +20 webs WordPress/PrestaShop\n- MADISON Experience Marketing (Oct - Dic 2021)   Web Dev (FCT)",
+              "# Experiencia\n- Esloogan 360 (Feb 2026 - May 2026)   Headless WP + Next.js + WooCommerce\n- DIPE Desarrollo Web (Jun 2022 - Feb 2026)   +20 webs WordPress/PrestaShop\n- MADISON Experience Marketing (Oct - Dic 2021)   Web Dev (FCT)",
           },
           "contact.txt": {
             type: "file",

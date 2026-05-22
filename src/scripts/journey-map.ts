@@ -29,7 +29,7 @@ const locations: Location[] = [
       {
         district: "Valladolid",
         company: "Esloogan 360",
-        period: { es: "2026 - Actualidad", en: "2026 - Present" },
+        period: { es: "2026 - May 2026", en: "2026 - May 2026" },
         role: { es: "Desarrollador Full Stack", en: "Full Stack Developer" },
       },
       {
